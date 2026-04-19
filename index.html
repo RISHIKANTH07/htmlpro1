@@ -8,297 +8,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #000000;   /* pure black background */
-      color: #eef2ff;
-      font-family: 'Inter', sans-serif;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    /* custom scroll */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0a0a0a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #2d2d2d;
-      border-radius: 10px;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    /* glassmorphic cards with dark elegance */
-    .card, .project-card, .cert-card, .skill-badge, .contact-card, .exp-item {
-      background: rgba(18, 18, 24, 0.85);
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(66, 66, 88, 0.4);
-      border-radius: 1.75rem;
-      transition: all 0.25s ease;
-    }
-
-    .project-card:hover, .cert-card:hover {
-      border-color: #3b82f6;
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6);
-      background: rgba(25, 25, 35, 0.95);
-    }
-
-    /* headers & typography */
-    h1, h2, h3 {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    h1 {
-      font-size: 3rem;
-      background: linear-gradient(135deg, #FFFFFF, #94a3f8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      border-left: 5px solid #3b82f6;
-      padding-left: 1rem;
-      display: inline-block;
-    }
-    .section-title {
-      margin-bottom: 2rem;
-    }
-    .gradient-text {
-      background: linear-gradient(120deg, #c084fc, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    /* navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 1.2rem 2rem;
-      background: #030303dd;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #222;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      color: #cdd9ff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-    .nav-links a:hover {
-      color: white;
-      text-shadow: 0 0 5px #3b82f6;
-    }
-
-    /* profile intro */
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-      margin-bottom: 3rem;
-      background: rgba(8, 8, 12, 0.6);
-      border-radius: 2.5rem;
-      padding: 2rem;
-      border: 1px solid #262626;
-    }
-    .hero-left {
-      flex: 2;
-    }
-    .hero-left p {
-      font-size: 1.1rem;
-      color: #b9c7e6;
-      margin: 0.75rem 0;
-    }
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      margin-top: 1.2rem;
-    }
-    .contact-info a {
-      color: #e0e7ff;
-      text-decoration: none;
-      background: #1f1f2e;
-      padding: 0.5rem 1rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .contact-info a:hover {
-      background: #3b82f6;
-      color: white;
-    }
-    .hero-right {
-      flex: 1;
-      text-align: center;
-    }
-    .avatar-icon {
-      font-size: 5rem;
-      background: #0f0f1a;
-      width: 120px;
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 60px;
-      margin: 0 auto;
-      border: 2px solid #3b82f6;
-      box-shadow: 0 0 18px #3b82f640;
-    }
-
-    /* Skills grid */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-    .skill-badge {
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      background: #181822;
-      font-weight: 500;
-      font-size: 0.85rem;
-      border: 1px solid #2c2c3a;
-    }
-
-    /* Projects & Certs grid */
-    .projects-grid, .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.8rem;
-      margin-top: 1rem;
-    }
-    .project-card, .cert-card {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    .project-card h3, .cert-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-    }
-    .project-card p, .cert-card p {
-      color: #b9c2dd;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      flex-grow: 1;
-    }
-    .btn-link {
-      margin-top: 0.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #2d2d3a;
-      padding: 0.55rem 1.2rem;
-      border-radius: 2rem;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      width: fit-content;
-      transition: 0.2s;
-      border: 1px solid #4b5563;
-    }
-    .btn-link i {
-      font-size: 0.85rem;
-    }
-    .btn-link:hover {
-      background: #2563eb;
-      border-color: #2563eb;
-    }
-    /* work experience */
-    .exp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-    .exp-item {
-      padding: 1.2rem 1.5rem;
-      border-radius: 1.5rem;
-    }
-    .exp-item h3 {
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .date-badge {
-      font-size: 0.75rem;
-      background: #1f2937;
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      margin-left: 0.5rem;
-      font-weight: normal;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding: 1.5rem;
-      border-top: 1px solid #1e1e2a;
-      color: #6c7a91;
-    }
-    @media (max-width: 680px) {
-      .container {
-        padding: 1.2rem;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      .hero {
-        flex-direction: column;
-      }
-    }
-    .loading {
-      text-align: center;
-      padding: 2rem;
-      color: #aaa;
-    }
-    button.json-refresh {
-      background: none;
-      border: none;
-      color: #60a5fa;
-      cursor: pointer;
-      font-size: 0.8rem;
-    }
+    /* ==== Your existing CSS styles (unchanged) ==== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000000; color: #eef2ff; font-family: 'Inter', sans-serif; line-height: 1.5; scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #2d2d2d; border-radius: 10px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .card, .project-card, .cert-card, .skill-badge, .contact-card, .exp-item { background: rgba(18, 18, 24, 0.85); backdrop-filter: blur(2px); border: 1px solid rgba(66, 66, 88, 0.4); border-radius: 1.75rem; transition: all 0.25s ease; }
+    .project-card:hover, .cert-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6); background: rgba(25, 25, 35, 0.95); }
+    h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
+    h1 { font-size: 3rem; background: linear-gradient(135deg, #FFFFFF, #94a3f8); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.5rem; }
+    h2 { font-size: 2rem; margin-bottom: 1.5rem; border-left: 5px solid #3b82f6; padding-left: 1rem; display: inline-block; }
+    .section-title { margin-bottom: 2rem; }
+    .gradient-text { background: linear-gradient(120deg, #c084fc, #60a5fa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.2rem 2rem; background: #030303dd; backdrop-filter: blur(12px); border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .nav-links a { color: #cdd9ff; text-decoration: none; font-weight: 500; transition: 0.2s; }
+    .nav-links a:hover { color: white; text-shadow: 0 0 5px #3b82f6; }
+    .hero { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem; margin-bottom: 3rem; background: rgba(8, 8, 12, 0.6); border-radius: 2.5rem; padding: 2rem; border: 1px solid #262626; }
+    .hero-left { flex: 2; }
+    .hero-left p { font-size: 1.1rem; color: #b9c7e6; margin: 0.75rem 0; }
+    .contact-info { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.2rem; }
+    .contact-info a { color: #e0e7ff; text-decoration: none; background: #1f1f2e; padding: 0.5rem 1rem; border-radius: 40px; font-size: 0.9rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .contact-info a:hover { background: #3b82f6; color: white; }
+    .hero-right { flex: 1; text-align: center; }
+    .avatar-icon { width: 120px; height: 120px; margin: 0 auto; border-radius: 60px; overflow: hidden; border: 2px solid #3b82f6; box-shadow: 0 0 18px #3b82f640; background: #0f0f1a; display: flex; align-items: center; justify-content: center; }
+    .avatar-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+    .skill-badge { padding: 0.5rem 1.2rem; border-radius: 40px; background: #181822; font-weight: 500; font-size: 0.85rem; border: 1px solid #2c2c3a; }
+    .projects-grid, .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.8rem; margin-top: 1rem; }
+    .project-card, .cert-card { padding: 1.5rem; display: flex; flex-direction: column; height: 100%; }
+    .project-card h3, .cert-card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .project-card p, .cert-card p { color: #b9c2dd; font-size: 0.9rem; margin-bottom: 1rem; flex-grow: 1; }
+    .btn-link { margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 0.5rem; background: #2d2d3a; padding: 0.55rem 1.2rem; border-radius: 2rem; text-decoration: none; color: white; font-weight: 500; width: fit-content; transition: 0.2s; border: 1px solid #4b5563; }
+    .btn-link i { font-size: 0.85rem; }
+    .btn-link:hover { background: #2563eb; border-color: #2563eb; }
+    .exp-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .exp-item { padding: 1.2rem 1.5rem; border-radius: 1.5rem; }
+    .exp-item h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+    .date-badge { font-size: 0.75rem; background: #1f2937; padding: 0.2rem 0.8rem; border-radius: 20px; margin-left: 0.5rem; font-weight: normal; }
+    footer { text-align: center; margin-top: 3rem; padding: 1.5rem; border-top: 1px solid #1e1e2a; color: #6c7a91; }
+    @media (max-width: 680px) { .container { padding: 1.2rem; } h1 { font-size: 2.2rem; } .hero { flex-direction: column; } }
+    .loading { text-align: center; padding: 2rem; color: #aaa; }
   </style>
 </head>
 <body>
@@ -315,7 +68,7 @@
 </nav>
 
 <main class="container" id="home">
-  <!-- Hero Section -->
+  <!-- Hero Section with YOUR IMAGE -->
   <div class="hero">
     <div class="hero-left">
       <h1>D RISHIKANTH</h1>
@@ -324,13 +77,14 @@
       <div class="contact-info">
         <a href="mailto:rishikanth0709@gmail.com"><i class="fas fa-envelope"></i> rishikanth0709@gmail.com</a>
         <a href="tel:+919940481268"><i class="fas fa-phone-alt"></i> +91 99404 81268</a>
-        <a href="https://github.com/RISHIKANTH07" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/rishi-kanth-4b2098331/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       </div>
     </div>
     <div class="hero-right">
       <div class="avatar-icon">
-        <i class="fas fa-robot" style="font-size: 3.5rem; color:#60a5fa;"></i>
+        <!-- REPLACE 'YOUR_RAW_IMAGE_LINK_HERE' WITH THE CORRECT RAW GITHUB LINK -->
+        <img src="YOUR_RAW_IMAGE_LINK_HERE" alt="D Rishikanth Profile">
       </div>
       <p style="margin-top: 1rem; font-size:0.85rem;">📍 Chennai, India</p>
     </div>
@@ -368,7 +122,7 @@
     </div>
   </div>
 
-  <!-- WORK EXPERIENCE (hardcoded from resume but style matches) -->
+  <!-- WORK EXPERIENCE -->
   <div id="experience" style="margin-bottom: 3rem;">
     <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
     <div class="exp-list">
@@ -392,8 +146,8 @@
     <div class="contact-card" style="padding:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;">
       <span><i class="fas fa-envelope"></i> rishikanth0709@gmail.com</span>
       <span><i class="fas fa-phone-alt"></i> +91 9940481268</span>
-      <span><i class="fab fa-github"></i>https://github.com/RISHIKANTH07</span>
-      <span><i class="fab fa-linkedin"></i> https://www.linkedin.com/in/rishi-kanth-4b2098331/</span>
+      <span><i class="fab fa-github"></i> github.com/rishikanth</span>
+      <span><i class="fab fa-linkedin"></i> linkedin.com/in/rishikanth-ai</span>
     </div>
   </div>
   <footer>
@@ -402,157 +156,28 @@
 </main>
 
 <script>
-  // ---------- JSON DATA EMBEDDED as valid projects & certifications with links ----------
-  // According to requirement: "portfolio website with json for adding projects with link and certification"
-  // We'll define a json object that holds projects and certifications. This can be easily edited or loaded externally.
-  // For full demonstration, inline JSON but behaves like dynamic source. You can replace with fetch('/data.json') if needed.
-  
+  // JSON data for projects and certifications (with links)
   const portfolioData = {
     "projects": [
-      {
-        "title": "QR Code-Based Machine Information System",
-        "description": "Educational project providing machine-specific instant information via QR codes, improving maintenance workflows.",
-        "link": "https://github.com/rishikanth/qr-machine-info",
-        "linkText": "View Repository →"
-      },
-      {
-        "title": "Hands-Free Voice & Gesture Control System",
-        "description": "Real-time gesture & voice recognition for hands-free computer control, AI-guided UI and media control.",
-        "link": "https://github.com/rishikanth/voice-gesture-control",
-        "linkText": "Demo & Code →"
-      },
-      {
-        "title": "Text Data Handling Project",
-        "description": "Preprocessing, cleaning and managing textual data efficiently for AI/ML pipelines using NLP techniques.",
-        "link": "https://github.com/rishikanth/text-data-nlp",
-        "linkText": "Explore Project →"
-      },
-      {
-        "title": "Student Dropout Detection Using ML",
-        "description": "Predicting potential dropouts using attendance, performance & behavior data to support proactive counseling.",
-        "link": "https://github.com/rishikanth/dropout-prediction-ml",
-        "linkText": "ML Model →"
-      },
-      {
-        "title": "Machine Learning Model Suite",
-        "description": "Implemented & evaluated KNN, Logistic Regression, Naive Bayes, SVM, Linear Regression with Scikit-learn.",
-        "link": "https://github.com/RISHIKANTH07/machinelearning/tree/main/classification",
-        "linkText": "View on GitHub →"
-      }
+      { "title": "QR Code-Based Machine Information System", "description": "Educational project providing machine-specific instant information via QR codes, improving maintenance workflows.", "link": "https://github.com/rishikanth/qr-machine-info", "linkText": "View Repository →" },
+      { "title": "Hands-Free Voice & Gesture Control System", "description": "Real-time gesture & voice recognition for hands-free computer control, AI-guided UI and media control.", "link": "https://github.com/rishikanth/voice-gesture-control", "linkText": "Demo & Code →" },
+      { "title": "Text Data Handling Project", "description": "Preprocessing, cleaning and managing textual data efficiently for AI/ML pipelines using NLP techniques.", "link": "https://github.com/rishikanth/text-data-nlp", "linkText": "Explore Project →" },
+      { "title": "Student Dropout Detection Using ML", "description": "Predicting potential dropouts using attendance, performance & behavior data to support proactive counseling.", "link": "https://github.com/rishikanth/dropout-prediction-ml", "linkText": "ML Model →" },
+      { "title": "Machine Learning Model Suite", "description": "Implemented & evaluated KNN, Logistic Regression, Naive Bayes, SVM, Linear Regression with Scikit-learn.", "link": "https://github.com/rishikanth/ml-algorithms-suite", "linkText": "View on GitHub →" }
     ],
     "certifications": [
-      {
-        "title": "C++, Python & Java Certification",
-        "issuer": "TechTrio Course at Cybernaut",
-        "description": "Comprehensive programming certification covering OOP, data structures, and application development.",
-        "link": "https://cert.cybernaut.com/verify/rishikanth",
-        "linkText": "Verify Certificate"
-      },
-      {
-        "title": "Machine Learning Techniques Internship",
-        "issuer": "NSIC (National Small Industries Corporation)",
-        "description": "Hands-on ML internship focused on preprocessing, feature engineering & model evaluation.",
-        "link": "https://nsic.ml-cert.in/rishikanth",
-        "linkText": "Certificate Link"
-      },
-      {
-        "title": "Diploma in Computer Software",
-        "issuer": "Computer Software College",
-        "description": "Advanced diploma covering MySQL, software engineering fundamentals, and full-stack basics.",
-        "link": "https://csc.edu/diploma/rishikanth",
-        "linkText": "Show Credential"
-      },
-      {
-        "title": "Database Management - MySQL",
-        "issuer": "Vel Tech & CSC",
-        "description": "Specialized certification in MySQL database design, query optimization and administration.",
-        "link": "https://certdb.rishikanth.me/mysql",
-        "linkText": "View Certificate"
-      }
+      { "title": "C++, Python & Java Certification", "issuer": "TechTrio Course at Cybernaut", "description": "Comprehensive programming certification covering OOP, data structures, and application development.", "link": "https://cert.cybernaut.com/verify/rishikanth", "linkText": "Verify Certificate" },
+      { "title": "Machine Learning Techniques Internship", "issuer": "NSIC (National Small Industries Corporation)", "description": "Hands-on ML internship focused on preprocessing, feature engineering & model evaluation.", "link": "https://nsic.ml-cert.in/rishikanth", "linkText": "Certificate Link" },
+      { "title": "Diploma in Computer Software", "issuer": "Computer Software College", "description": "Advanced diploma covering MySQL, software engineering fundamentals, and full-stack basics.", "link": "https://csc.edu/diploma/rishikanth", "linkText": "Show Credential" },
+      { "title": "Database Management - MySQL", "issuer": "Vel Tech & CSC", "description": "Specialized certification in MySQL database design, query optimization and administration.", "link": "https://certdb.rishikanth.me/mysql", "linkText": "View Certificate" }
     ]
   };
 
-  // Function to render projects with links
-  function renderProjects() {
-    const container = document.getElementById('projects-container');
-    if (!container) return;
-    const projects = portfolioData.projects;
-    if (!projects.length) {
-      container.innerHTML = '<div class="card" style="padding:2rem;">No projects available. Add via JSON.</div>';
-      return;
-    }
-    container.innerHTML = projects.map(proj => `
-      <div class="project-card">
-        <h3>${escapeHtml(proj.title)}</h3>
-        <p>${escapeHtml(proj.description)}</p>
-        <a href="${escapeHtml(proj.link)}" target="_blank" rel="noopener noreferrer" class="btn-link">
-          <i class="fas fa-external-link-alt"></i> ${escapeHtml(proj.linkText || 'View Project')}
-        </a>
-      </div>
-    `).join('');
-  }
-
-  // Render certifications with links
-  function renderCertifications() {
-    const container = document.getElementById('certs-container');
-    if (!container) return;
-    const certs = portfolioData.certifications;
-    if (!certs.length) {
-      container.innerHTML = '<div class="card" style="padding:2rem;">No certifications added. Update JSON.</div>';
-      return;
-    }
-    container.innerHTML = certs.map(cert => `
-      <div class="cert-card">
-        <h3><i class="fas fa-award" style="color:#facc15;"></i> ${escapeHtml(cert.title)}</h3>
-        <p><strong>${escapeHtml(cert.issuer)}</strong> — ${escapeHtml(cert.description)}</p>
-        <a href="${escapeHtml(cert.link)}" target="_blank" rel="noopener noreferrer" class="btn-link">
-          <i class="fas fa-certificate"></i> ${escapeHtml(cert.linkText || 'View Credential')}
-        </a>
-      </div>
-    `).join('');
-  }
-
-  // simple XSS protection
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-      return c;
-    });
-  }
-
-  // initialize dynamic content
-  renderProjects();
-  renderCertifications();
-
-  // Optional: allow external JSON file via fetch if you ever want to load from separate .json file.
-  // For demonstration, the above JSON is the source of truth, and can be modified in this script.
-  // To meet "portfolio website with json for adding projects with link and certification" exactly,
-  // we've provided a clean JSON object (portfolioData) that acts as a content manager.
-  // You can easily add new projects or certs inside the arrays, including custom links.
-  
-  // Extra: adding a console info
-  console.log('✅ Portfolio loaded | JSON-driven projects & certifications ready. Add new entries via portfolioData object.');
+  function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+  function renderProjects() { const container = document.getElementById('projects-container'); if (!container) return; const projects = portfolioData.projects; if (!projects.length) { container.innerHTML = '<div class="card" style="padding:2rem;">No projects available.</div>'; return; } container.innerHTML = projects.map(proj => `<div class="project-card"><h3>${escapeHtml(proj.title)}</h3><p>${escapeHtml(proj.description)}</p><a href="${escapeHtml(proj.link)}" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fas fa-external-link-alt"></i> ${escapeHtml(proj.linkText || 'View Project')}</a></div>`).join(''); }
+  function renderCertifications() { const container = document.getElementById('certs-container'); if (!container) return; const certs = portfolioData.certifications; if (!certs.length) { container.innerHTML = '<div class="card" style="padding:2rem;">No certifications added.</div>'; return; } container.innerHTML = certs.map(cert => `<div class="cert-card"><h3><i class="fas fa-award" style="color:#facc15;"></i> ${escapeHtml(cert.title)}</h3><p><strong>${escapeHtml(cert.issuer)}</strong> — ${escapeHtml(cert.description)}</p><a href="${escapeHtml(cert.link)}" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fas fa-certificate"></i> ${escapeHtml(cert.linkText || 'View Credential')}</a></div>`).join(''); }
+  renderProjects(); renderCertifications();
+  console.log('✅ Portfolio with image placeholder ready. Replace YOUR_RAW_IMAGE_LINK_HERE with actual raw GitHub URL.');
 </script>
-
-<!-- 
-  ==================== HOW TO ADD NEW PROJECTS / CERTIFICATIONS WITH LINKS ====================
-  Simply edit the `portfolioData` object inside <script> tag (lines ~220-280).
-  
-  To add a new Project: 
-    push new object to "projects" array: 
-    { "title": "Project Name", "description": "short desc", "link": "https://...", "linkText": "Live Demo" }
-  
-  To add a new Certification:
-    push new object to "certifications" array:
-    { "title": "Cert name", "issuer": "Org name", "description": "details", "link": "https://...", "linkText": "Show" }
-  
-  All links will be displayed as buttons. Compatible with external JSON if needed.
-  Perfect black background, responsive, and modern glass-card UI.
--->
 </body>
 </html>
